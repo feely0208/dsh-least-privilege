@@ -1,5 +1,7 @@
 # @deepwhale-cn/dsh-least-privilege
 
+[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/feely0208/dsh-least-privilege)
+
 **最小权限检查** —— 容器跑 root、IAM 通配、CORS 全开、令牌申请 admin。
 
 ## 不装它会怎样
