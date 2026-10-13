@@ -1,0 +1,14 @@
+{
+  "id": "LP-ROOT-CONTAINER",
+  "title": "容器以 root 运行或使用特权模式",
+  "severity": "high",
+  "source": "OWASP Docker Security Cheat Sheet —— 容器应以非 root 用户运行；CIS Docker Benchmark 4.1（Create a user for the container）· 5.4（不启用 privileged）",
+  "advice": "以 root 运行的容器，一旦被突破（应用漏洞 / 供应链投毒），攻击者直接拿到容器内最高权限，并可能借助内核漏洞逃逸到宿主。--privileged 更甚：几乎等于把宿主交出去。做法：Dockerfile 里加非 root 用户 + USER，去掉 --privileged，按需加 cap_drop。",
+  "check": {
+    "type": "file-pattern",
+    "pattern": "(--privileged|--cap-add[= ]ALL|user:\\s*[\"']?root|USER\\s+root|user:\\s*0\\b)",
+    "flags": "gi",
+    "paths": ["Dockerfile", "**/Dockerfile", "**/Dockerfile.*", "docker-compose.yml", "docker-compose.yaml", "**/docker-compose*.yml", "**/docker-compose*.yaml", "*.k8s.yml", "**/deployment*.yaml", "**/pod*.yaml"],
+    "max": 20
+  }
+}

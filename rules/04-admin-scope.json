@@ -1,0 +1,28 @@
+{
+  "id": "LP-ADMIN-SCOPE",
+  "title": "申请了 admin / 全量 scope 的令牌",
+  "severity": "medium",
+  "source": "OAuth 2.0 安全最佳实践（BCP）—— 应使用最小 scope；GitHub/云厂商文档均建议按需授权",
+  "advice": "令牌申请了 `admin` / `*` / `repo`（GitHub 的 repo 含写权限）这类全量 scope，而代码只用到其中一小部分。令牌泄露时，攻击者拿到的是你申请的全部权限 —— 不是用到的部分。按实际调用的接口裁剪 scope。",
+  "check": {
+    "type": "file-pattern",
+    "pattern": "(scope|scopes|permissions|SCOPE)[\"']?\\s*[:=]\\s*[\"']?[^\"'\\n]*(admin|\\*|repo\\b|write:org|full_access)[^\"'\\n]*",
+    "flags": "gi",
+    "exts": [
+      ".js",
+      ".mjs",
+      ".cjs",
+      ".ts",
+      ".py",
+      ".go",
+      ".java",
+      ".yml",
+      ".yaml",
+      ".json",
+      ".env",
+      ".ini",
+      ".conf"
+    ],
+    "max": 20
+  }
+}

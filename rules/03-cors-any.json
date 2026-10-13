@@ -1,0 +1,14 @@
+{
+  "id": "LP-CORS-ANY",
+  "title": "CORS 允许所有来源",
+  "severity": "medium",
+  "source": "OWASP — CORS 配置错误（WSTG-CLNT-11）；MDN — Access-Control-Allow-Origin",
+  "advice": "`Access-Control-Allow-Origin: *` 让任意网站都能带着用户凭证调你的接口。如果同时开了 `Allow-Credentials: true`，浏览器会直接拒绝（但有些框架会「变通」成回显 Origin —— 那样更危险）。改成来源白名单。",
+  "check": {
+    "type": "file-pattern",
+    "pattern": "(Access-Control-Allow-Origin[\"']?\\s*[:=]\\s*[\"']?\\*|origin\\s*:\\s*[\"']\\*[\"']|cors\\(\\s*\\))",
+    "flags": "gi",
+    "exts": [".js", ".mjs", ".cjs", ".ts", ".py", ".go", ".java", ".rb", ".php", ".conf", ".yml", ".yaml"],
+    "max": 20
+  }
+}

@@ -1,0 +1,5 @@
+services:
+  app:
+    build: .
+    read_only: true
+    cap_drop: [ALL]

@@ -1,0 +1,14 @@
+{
+  "id": "LP-WILDCARD-PERM",
+  "title": "权限策略出现通配符（Action/Resource 为 *）",
+  "severity": "high",
+  "source": "AWS IAM 最佳实践 —— 授予最小权限，避免在策略中使用通配符；CIS Benchmark · 最小权限原则",
+  "advice": "`\"Action\": \"*\"` 或 `\"Resource\": \"*\"` 意味着这条凭据能做任何事、访问任何资源。一旦泄露（日志、CI、前端），攻击者拿到的是整个账号。改成按需列举具体 Action 与资源 ARN。",
+  "check": {
+    "type": "file-pattern",
+    "pattern": "\"(Action|Resource|Principal)\"\\s*:\\s*(\"\\*\"|\\[\\s*\"\\*\"\\s*\\])",
+    "flags": "g",
+    "exts": [".json", ".yml", ".yaml", ".tf", ".template"],
+    "max": 20
+  }
+}
