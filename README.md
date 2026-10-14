@@ -48,7 +48,11 @@ dsh-least-privilege --list-rules
 dsh-least-privilege --html r.html
 ```
 
-![dsh-least-privilege 的检查报告示例](https://www.deepwhale.org.cn/plugin-assets/dsh-least-privilege/report.png)
+![dsh-least-privilege 检查报告示例](https://www.deepwhale.org.cn/plugin-assets/dsh-least-privilege/report.png)
+
+![dsh-least-privilege 演示模式输出](https://www.deepwhale.org.cn/plugin-assets/dsh-least-privilege/demo.png)
+
+![dsh-least-privilege 规则与依据](https://www.deepwhale.org.cn/plugin-assets/dsh-least-privilege/rules.png)
 
 ## 边界
 
