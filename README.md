@@ -3,7 +3,7 @@
 [![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/feely0208/dsh-least-privilege)
 
 
-**关键词**：最小权限 · 权限过宽 · 权限管理 · 容器 root · IAM 通配 · CORS · 访问控制 · 权限最小化
+**关键词**：最小权限 · 权限过宽 · 权限管理 · 容器 root · IAM · CORS · 访问控制 · 权限最小化 · 特权容器
 **Keywords**: least privilege · over-permission · container root · IAM wildcard · CORS · access control
 **最小权限检查** —— 容器跑 root、IAM 通配、CORS 全开、令牌申请 admin。
 
