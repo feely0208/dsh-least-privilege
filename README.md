@@ -48,7 +48,7 @@ dsh-least-privilege --list-rules
 dsh-least-privilege --html r.html
 ```
 
-![报告示例](docs/report.png)
+![dsh-least-privilege 的检查报告示例](https://raw.githubusercontent.com/feely0208/dsh-least-privilege/main/docs/report.png)
 
 ## 边界
 
