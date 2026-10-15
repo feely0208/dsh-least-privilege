@@ -1,0 +1,65 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; background:#0d0f13; display:flex; justify-content:center;
+         align-items:flex-start; padding:22px; font-family:-apple-system,"PingFang SC",
+         "Helvetica Neue",sans-serif; }
+  .win { width:1180px; border-radius:11px; overflow:hidden;
+          box-shadow:0 14px 44px rgba(0,0,0,.55); }
+  .bar { background:#2a2d34; padding:11px 15px; display:flex; align-items:center; gap:9px; }
+  .dot { width:12px; height:12px; border-radius:50%; }
+  .t { margin-left:11px; color:#7a8290; font-size:13px; letter-spacing:.02em; }
+  .term { background:#1b1d22; padding:20px 22px 24px; font-family:"SF Mono",Menlo,Consolas,
+           "PingFang SC",monospace; font-size:13.5px; line-height:1.72; }
+  .cmd { color:#5ee08a; margin-bottom:13px; font-size:13.5px; }
+  .cmd b { color:#fff; font-weight:600; }
+  .l { white-space:pre-wrap; word-break:break-word; }
+</style></head><body>
+  <div class="win">
+    <div class="bar">
+      <span class="dot" style="background:#ff5f57"></span>
+      <span class="dot" style="background:#febc2e"></span>
+      <span class="dot" style="background:#28c840"></span>
+      <span class="t">dsh-least-privilege · demo</span>
+    </div>
+    <div class="term">
+      <div class="cmd">$ <b>dsh-least-privilege --demo</b></div>
+      <div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#d8dee9">  【演示模式】使用内置样本，不是你的真实项目。</span></div>
+<div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#d8dee9">  深鲸守护 · 最小权限检查 v0.1.0</span></div>
+<div class="l"><span style="color:#d8dee9">  ──────────────────────────────────────────────────────────────────</span></div>
+<div class="l"><span style="color:#d8dee9">  扫描范围   内置演示样本 · 故意有问题的项目</span></div>
+<div class="l"><span style="color:#d8dee9">             5 个文件 · 0 个目录已跳过</span></div>
+<div class="l"><span style="color:#d8dee9">  检查规则   4/4 条</span></div>
+<div class="l"><span style="color:#ffd166">  命中       4 条</span></div>
+<div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#ff6b6b">  【高】2 条</span></div>
+<div class="l"><span style="color:#7a8290">    · 容器以 root 运行或使用特权模式</span></div>
+<div class="l"><span style="color:#d8dee9">      位置  Dockerfile:2</span></div>
+<div class="l"><span style="color:#7a8290">      证据  USER root</span></div>
+<div class="l"><span style="color:#7a8290">      依据  OWASP Docker Security Cheat Sheet —— 容器应以非 root 用户运行；CIS Docker Benchmark 4.1（Create a user for the container）· 5.4（不启用 privileged）</span></div>
+<div class="l"><span style="color:#d8dee9">      建议  以 root 运行的容器，一旦被突破（应用漏洞 / 供应链投毒），攻击者直接拿到容器内最高权限，并可能借助内核漏洞逃逸到宿主。--privileged 更甚：几乎等于把宿主交出去。做法：Dockerfile 里加非 root 用户 + USER，去掉 --privileged，按需加 cap_drop。</span></div>
+<div class="l"><span style="color:#7a8290">    · 权限策略出现通配符（Action/Resource 为 *）</span></div>
+<div class="l"><span style="color:#d8dee9">      位置  iam-policy.json:1</span></div>
+<div class="l"><span style="color:#7a8290">      证据  &quot;Action&quot;:&quot;*&quot;</span></div>
+<div class="l"><span style="color:#7a8290">      依据  AWS IAM 最佳实践 —— 授予最小权限，避免在策略中使用通配符；CIS Benchmark · 最小权限原则</span></div>
+<div class="l"><span style="color:#d8dee9">      建议  `&quot;Action&quot;: &quot;*&quot;` 或 `&quot;Resource&quot;: &quot;*&quot;` 意味着这条凭据能做任何事、访问任何资源。一旦泄露（日志、CI、前端），攻击者拿到的是整个账号。改成按需列举具体 Action 与资源 ARN。</span></div>
+<div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#ffd166">  【中】2 条</span></div>
+<div class="l"><span style="color:#7a8290">    · CORS 允许所有来源</span></div>
+<div class="l"><span style="color:#d8dee9">      位置  server.js:1</span></div>
+<div class="l"><span style="color:#7a8290">      证据  cors()</span></div>
+<div class="l"><span style="color:#7a8290">      依据  OWASP — CORS 配置错误（WSTG-CLNT-11）；MDN — Access-Control-Allow-Origin</span></div>
+<div class="l"><span style="color:#d8dee9">      建议  `Access-Control-Allow-Origin: *` 让任意网站都能带着用户凭证调你的接口。如果同时开了 `Allow-Credentials: true`，浏览器会直接拒绝（但有些框架会「变通」成回显 Origin —— 那样更危险）。改成来源白名单。</span></div>
+<div class="l"><span style="color:#7a8290">    · 申请了 admin / 全量 scope 的令牌</span></div>
+<div class="l"><span style="color:#d8dee9">      位置  .env:1</span></div>
+<div class="l"><span style="color:#7a8290">      证据  SCOPE=admin repo</span></div>
+<div class="l"><span style="color:#7a8290">      依据  OAuth 2.0 安全最佳实践（BCP）—— 应使用最小 scope；GitHub/云厂商文档均建议按需授权</span></div>
+<div class="l"><span style="color:#d8dee9">      建议  令牌申请了 `admin` / `*` / `repo`（GitHub 的 repo 含写权限）这类全量 scope，而代码只用到其中一小部分。令牌泄露时，攻击者拿到的是你申请的全部权限 —— 不是用到的部分。按实际调用的接口裁剪 scope。</span></div>
+<div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#d8dee9">  ──────────────────────────────────────────────────────────────────</span></div>
+    </div>
+  </div>
+</body></html>

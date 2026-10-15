@@ -1,0 +1,47 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; background:#0d0f13; display:flex; justify-content:center;
+         align-items:flex-start; padding:22px; font-family:-apple-system,"PingFang SC",
+         "Helvetica Neue",sans-serif; }
+  .win { width:1180px; border-radius:11px; overflow:hidden;
+          box-shadow:0 14px 44px rgba(0,0,0,.55); }
+  .bar { background:#2a2d34; padding:11px 15px; display:flex; align-items:center; gap:9px; }
+  .dot { width:12px; height:12px; border-radius:50%; }
+  .t { margin-left:11px; color:#7a8290; font-size:13px; letter-spacing:.02em; }
+  .term { background:#1b1d22; padding:20px 22px 24px; font-family:"SF Mono",Menlo,Consolas,
+           "PingFang SC",monospace; font-size:13.5px; line-height:1.72; }
+  .cmd { color:#5ee08a; margin-bottom:13px; font-size:13.5px; }
+  .cmd b { color:#fff; font-weight:600; }
+  .l { white-space:pre-wrap; word-break:break-word; }
+</style></head><body>
+  <div class="win">
+    <div class="bar">
+      <span class="dot" style="background:#ff5f57"></span>
+      <span class="dot" style="background:#febc2e"></span>
+      <span class="dot" style="background:#28c840"></span>
+      <span class="t">dsh-least-privilege · rules</span>
+    </div>
+    <div class="term">
+      <div class="cmd">$ <b>dsh-least-privilege --list-rules</b></div>
+      <div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#d8dee9">  深鲸守护 · 最小权限检查 —— 4 条规则</span></div>
+<div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#d8dee9">  [high] LP-ROOT-CONTAINER</span></div>
+<div class="l"><span style="color:#d8dee9">        容器以 root 运行或使用特权模式</span></div>
+<div class="l"><span style="color:#7a8290">        依据：OWASP Docker Security Cheat Sheet —— 容器应以非 root 用户运行；CIS Docker Benchmark 4.1（Create a user for the container）· 5.4（不启用 privileged）</span></div>
+<div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#d8dee9">  [high] LP-WILDCARD-PERM</span></div>
+<div class="l"><span style="color:#d8dee9">        权限策略出现通配符（Action/Resource 为 *）</span></div>
+<div class="l"><span style="color:#7a8290">        依据：AWS IAM 最佳实践 —— 授予最小权限，避免在策略中使用通配符；CIS Benchmark · 最小权限原则</span></div>
+<div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#d8dee9">  [medium] LP-CORS-ANY</span></div>
+<div class="l"><span style="color:#d8dee9">        CORS 允许所有来源</span></div>
+<div class="l"><span style="color:#7a8290">        依据：OWASP — CORS 配置错误（WSTG-CLNT-11）；MDN — Access-Control-Allow-Origin</span></div>
+<div class="l"><span style="color:#7a8290">&nbsp;</span></div>
+<div class="l"><span style="color:#d8dee9">  [medium] LP-ADMIN-SCOPE</span></div>
+<div class="l"><span style="color:#d8dee9">        申请了 admin / 全量 scope 的令牌</span></div>
+<div class="l"><span style="color:#7a8290">        依据：OAuth 2.0 安全最佳实践（BCP）—— 应使用最小 scope；GitHub/云厂商文档均建议按需授权</span></div>
+    </div>
+  </div>
+</body></html>
