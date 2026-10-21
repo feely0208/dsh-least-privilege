@@ -1,5 +1,7 @@
 # @deepwhale-cn/dsh-least-privilege
 
+[![dshfind 收录](https://dshfind.com/api/badge/feely0208/dsh-least-privilege?lang=zh)](https://dshfind.com/zh/plugins/feely0208/dsh-least-privilege)
+
 [![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/feely0208/dsh-least-privilege)
 
 
